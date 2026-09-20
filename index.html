@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolBench | AI Tattoo & Vector Design Prompt Directory</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#030712',
+                        cardbg: '#0b0f19',
+                        brand: {
+                            cyan: '#06b6d4',
+                            purple: '#a855f7',
+                            pink: '#ec4899'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Masonry & Glassmorphism Styles */
+        body {
+            background-color: #030712;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        /* Hide scrollbars for slick UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-panel {
+            background: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.25);
+        }
+
+        /* AdSense Space Pulse Animation */
+        @keyframes pulseBorder {
+            0%, 100% { border-color: rgba(168, 85, 247, 0.3); }
+            50% { border-color: rgba(6, 182, 212, 0.6); }
+        }
+        .adsense-placeholder {
+            animation: pulseBorder 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-cyan selection:text-black">
+
+    <!-- HEADER NAVBAR -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 gap-4">
+                
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3 shrink-0">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center text-black font-black text-xl shadow-lg shadow-brand-cyan/20">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <div class="hidden sm:block">
+                        <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">ToolBench</span>
+                        <span class="block text-[10px] font-mono uppercase tracking-widest text-brand-cyan font-semibold">AI Gallery & Prompts</span>
+                    </div>
+                </a>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl relative">
+                    <div class="relative flex items-center">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 text-gray-400"></i>
+                        <input type="text" id="searchInput" placeholder="Search tattoo designs, hummingbird, vector art, prompts..." 
+                               class="w-full pl-11 pr-10 py-2.5 rounded-full bg-gray-900/90 border border-gray-700/60 text-sm text-gray-200 placeholder-gray-400 focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all">
+                        <button id="clearSearchBtn" class="hidden absolute right-3 text-gray-400 hover:text-white text-xs p-1">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-3">
+                    <button onclick="openSubmitModal()" class="flex items-center gap-2 bg-gradient-to-r from-brand-cyan to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-bold px-4 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md shadow-brand-cyan/20 active:scale-95">
+                        <i class="fa-solid fa-plus text-xs"></i>
+                        <span class="hidden sm:inline">Submit Design</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- TOP ADSENSE BANNER PLACEHOLDER (POLICY COMPLIANT) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="adsense-placeholder glass-panel rounded-2xl p-4 text-center border border-dashed border-gray-700 relative overflow-hidden">
+            <div class="text-[10px] uppercase tracking-widest font-mono text-gray-500 mb-1">Advertisement</div>
+            <div class="flex items-center justify-center min-h-[90px] bg-gray-900/40 rounded-xl border border-gray-800">
+                <!-- Replace with actual AdSense Ins Code:
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> 
+                -->
+                <div class="flex flex-col items-center gap-1 text-gray-500">
+                    <i class="fa-regular fa-rectangle-ad text-2xl text-brand-purple/70"></i>
+                    <span class="text-xs font-mono text-gray-400">Google AdSense Space (728x90 / Responsive Leaderboard)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORY TAGS SCROLLBAR -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-2" id="categoryContainer">
+            <!-- Dynamic Category Pills -->
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT MASONRY GRID -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-12 flex-1">
+        
+        <!-- Results Counter & Info -->
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-semibold text-gray-200 flex items-center gap-2">
+                <span id="activeCategoryTitle">All Designs</span>
+                <span id="resultCount" class="text-xs font-mono bg-gray-800 text-brand-cyan px-2.5 py-0.5 rounded-full border border-gray-700">0 prompts</span>
+            </h2>
+            <div class="text-xs text-gray-400 flex items-center gap-1">
+                <i class="fa-solid fa-sparkles text-brand-cyan"></i> AI Prompts Ready to Copy
+            </div>
+        </div>
+
+        <!-- Masonry Cards Container -->
+        <div id="masonryGrid" class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
+            <!-- Dynamic Cards Populated via JavaScript -->
+        </div>
+
+        <!-- Empty Search State -->
+        <div id="emptyState" class="hidden text-center py-16 glass-panel rounded-3xl max-w-md mx-auto my-8 border border-gray-800">
+            <i class="fa-solid fa-compass-drafting text-5xl text-gray-600 mb-4"></i>
+            <h3 class="text-lg font-bold text-gray-200 mb-1">No Designs Found</h3>
+            <p class="text-sm text-gray-400 mb-4">Try searching for generic terms like "Tattoo", "Minimalist", or "Vector".</p>
+            <button onclick="resetFilters()" class="bg-gray-800 hover:bg-gray-700 text-brand-cyan font-mono text-xs px-4 py-2 rounded-xl border border-gray-700 transition-all">
+                Reset All Filters
+            </button>
+        </div>
+    </main>
+
+    <!-- LIGHTBOX / DETAIL MODAL -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="glass-panel w-full max-w-4xl rounded-3xl border border-gray-700/80 overflow-hidden my-auto shadow-2xl relative flex flex-col md:flex-row max-h-[90vh]">
+            
+            <!-- Close Button -->
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-gray-800 text-gray-300 hover:text-white flex items-center justify-center transition-all border border-gray-700">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Image Side -->
+            <div class="w-full md:w-1/2 bg-black/60 flex items-center justify-center p-4 relative min-h-[300px]">
+                <img id="modalImage" src="" alt="Prompt Preview" class="max-h-[75vh] w-auto object-contain rounded-xl shadow-lg">
+                <div class="absolute bottom-4 left-4 bg-gray-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-gray-700 text-xs text-gray-300 font-mono">
+                    <span id="modalModel">Midjourney v6</span>
+                </div>
+                <div class="absolute top-4 left-4 bg-gray-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-gray-700 text-[10px] text-gray-400 font-mono max-w-[200px]">
+                    Reference photo for mood &amp; style &mdash; not a literal AI output of this prompt
+                </div>
+            </div>
+
+            <!-- Content Side -->
+            <div class="w-full md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto bg-gray-950/80">
+                <div class="space-y-4">
+                    <!-- Title & Badge -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span id="modalCategory" class="text-[10px] font-mono uppercase tracking-wider bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/30 px-2.5 py-0.5 rounded-full font-bold">Category</span>
+                        </div>
+                        <h3 id="modalTitle" class="text-xl font-bold text-white leading-snug">Design Title</h3>
+                    </div>
+
+                    <!-- Prompt Box -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-mono text-gray-400 flex items-center justify-between">
+                            <span><i class="fa-solid fa-terminal text-brand-cyan mr-1.5"></i>AI Prompt</span>
+                            <span class="text-[10px] text-gray-500">Click button to copy</span>
+                        </label>
+                        <div class="p-3.5 bg-gray-900 rounded-xl border border-gray-800 font-mono text-xs text-gray-200 leading-relaxed break-words relative group" id="modalPromptText">
+                            Prompt text here...
+                        </div>
+                    </div>
+
+                    <!-- Negative Prompt / Settings -->
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-mono text-gray-400">
+                            <i class="fa-solid fa-sliders text-brand-purple mr-1.5"></i>Parameters & Tags
+                        </label>
+                        <div class="flex flex-wrap gap-1.5" id="modalTags">
+                            <!-- Tags populated here -->
+                        </div>
+                    </div>
+
+                    <!-- MODAL IN-CONTENT ADSENSE SLOT -->
+                    <div class="adsense-placeholder p-3 bg-gray-900/60 rounded-xl border border-dashed border-gray-800 text-center">
+                        <span class="text-[9px] font-mono text-gray-500 block mb-1">SPONSORED ADVERTISEMENT</span>
+                        <div class="text-xs font-mono text-gray-400 py-3 border border-gray-800/80 rounded bg-gray-950/40">
+                            <!-- AdSense Modal Slot Code -->
+                            Google AdSense Rectangle Space (300x250)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Action Buttons -->
+                <div class="pt-4 border-t border-gray-800 flex items-center gap-3 mt-4">
+                    <button id="modalCopyBtn" onclick="" class="flex-1 bg-gradient-to-r from-brand-cyan to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-bold py-3 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-brand-cyan/20 active:scale-95">
+                        <i class="fa-regular fa-copy"></i> Copy Prompt
+                    </button>
+                    <button id="modalLikeBtn" class="bg-gray-900 hover:bg-gray-800 text-rose-500 p-3 rounded-xl border border-gray-800 transition-all flex items-center justify-center gap-2 text-sm">
+                        <i class="fa-regular fa-heart"></i>
+                        <span id="modalLikeCount" class="font-mono text-xs text-gray-300">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBMIT PROMPT MODAL -->
+    <div id="submitModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-lg rounded-3xl border border-gray-700/80 p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeSubmitModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane text-brand-cyan"></i> Submit Your AI Design
+                </h3>
+                <p class="text-xs text-gray-400 mt-1">Share your tattoo/vector AI prompt with thousands of creators.</p>
+            </div>
+
+            <form id="submitForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1">Design Title</label>
+                    <input id="submitTitle" type="text" required placeholder="e.g. Minimalist Fine Line Hummingbird" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3.5 py-2 text-sm text-gray-100 focus:outline-none focus:border-brand-cyan">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1">Category</label>
+                    <select id="submitCategory" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3.5 py-2 text-sm text-gray-100 focus:outline-none focus:border-brand-cyan">
+                        <option value="Fine Line">Fine Line</option>
+                        <option value="Flowers">Flowers</option>
+                        <option value="Minimalist">Minimalist</option>
+                        <option value="Vector Art">Vector Art</option>
+                        <option value="Aztec">Aztec</option>
+                        <option value="Colorful">Colorful</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1">Exact AI Prompt</label>
+                    <textarea id="submitPrompt" required rows="3" placeholder="Paste full prompt used in Midjourney, DALL-E 3, or Stable Diffusion..." class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3.5 py-2 text-sm text-gray-100 focus:outline-none focus:border-brand-cyan font-mono"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-gray-300 mb-1">Image URL (Direct link)</label>
+                    <input id="submitImageUrl" type="url" required placeholder="https://images.unsplash.com/..." class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3.5 py-2 text-sm text-gray-100 focus:outline-none focus:border-brand-cyan">
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-brand-cyan to-brand-purple text-black font-bold py-3 rounded-xl text-sm transition-all hover:opacity-90 mt-2">
+                    Send via Email
+                </button>
+                <p class="text-[10px] text-gray-500 text-center">Opens your email app with the details filled in.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden glass-panel border border-brand-cyan/50 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transition-all transform translate-y-4">
+        <i class="fa-solid fa-circle-check text-brand-cyan text-lg"></i>
+        <span id="toastMessage" class="text-xs font-medium">Copied to clipboard!</span>
+    </div>
+
+    <!-- ADSENSE COMPLIANT FOOTER -->
+    <footer class="glass-panel border-t border-gray-800/80 mt-16 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="md:col-span-2 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center text-black font-black text-sm">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <span class="text-lg font-bold text-white">ToolBench AI</span>
+                    </div>
+                    <p class="text-xs text-gray-400 max-w-sm leading-relaxed">
+                        Curated gallery of high-quality AI prompts, vector graphics, minimalist tattoos, and digital artworks. Created for designers, prompt engineers, and tattoo enthusiasts.
+                    </p>
+                </div>
+
+                <!-- Col 2: Categories -->
+                <div>
+                    <h4 class="text-xs font-mono uppercase tracking-wider text-gray-300 font-bold mb-3">Popular Tags</h4>
+                    <ul class="text-xs text-gray-400 space-y-2 font-medium">
+                        <li><a href="#" onclick="filterByCategory('Fine Line')" class="hover:text-brand-cyan transition-colors">Fine Line Tattoos</a></li>
+                        <li><a href="#" onclick="filterByCategory('Minimalist')" class="hover:text-brand-cyan transition-colors">Minimalist Designs</a></li>
+                        <li><a href="#" onclick="filterByCategory('Vector Art')" class="hover:text-brand-cyan transition-colors">Vector Graphics</a></li>
+                        <li><a href="#" onclick="filterByCategory('Flowers')" class="hover:text-brand-cyan transition-colors">Floral Patterns</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Compliance Links (CRITICAL FOR ADSENSE) -->
+                <div>
+                    <h4 class="text-xs font-mono uppercase tracking-wider text-gray-300 font-bold mb-3">Legal & Company</h4>
+                    <ul class="text-xs text-gray-400 space-y-2 font-medium">
+                        <li><a href="index.html" class="hover:text-brand-cyan transition-colors">Home Gallery</a></li>
+                        <li><a href="about.html" class="hover:text-brand-cyan transition-colors">About Us</a></li>
+                        <li><a href="privacy.html" class="hover:text-brand-cyan transition-colors">Privacy Policy</a></li>
+                        <li><a href="disclaimer.html" class="hover:text-brand-cyan transition-colors">Disclaimer</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-cyan transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-gray-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-mono">
+                <div>&copy; 2026 ToolBench AI Directory. All rights reserved.</div>
+                <div class="flex items-center gap-4">
+                    <a href="disclaimer.html" class="hover:text-gray-300 transition-colors">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // Sample High-Quality Data Array (Tattoo & Vector AI Prompts)
+        const mockDesigns = [
+            {
+                id: 1,
+                title: "Minimalist Fine Line Hummingbird",
+                category: "Fine Line",
+                tags: ["Hummingbird", "Fine Line", "Dainty", "Minimalist"],
+                likes: 0,
+                model: "Midjourney v6",
+                image: "https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=800&q=80",
+                prompt: "Continuous single fine line tattoo vector art of a delicate hummingbird in flight, minimalist style, black ink, clean white background, ultra detailed, vector precision --ar 3:4 --v 6.0"
+            },
+            {
+                id: 2,
+                title: "Geometric Snake & Floral Vector",
+                category: "Design",
+                tags: ["Snake", "Geometric", "Flowers", "Blackwork"],
+                likes: 0,
+                model: "DALL-E 3",
+                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+                prompt: "Tattoo design of a viper snake intertwined with peony flowers and sacred geometry circles, clean linework, high contrast vector graphics, isolated white background --v 6"
+            },
+            {
+                id: 3,
+                title: "Traditional Aztec Warrior Mask",
+                category: "Aztec",
+                tags: ["Aztec", "Tribal", "Black & Grey", "Traditional"],
+                likes: 0,
+                model: "Midjourney v6",
+                image: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80",
+                prompt: "Aztec warrior mask tattoo design, intricate Mayan tribal ornaments, heavy black ink shading, bold outline vector aesthetic, white background, high clarity"
+            },
+            {
+                id: 4,
+                title: "Watercolor Celestial Lotus Flower",
+                category: "Colorful",
+                tags: ["Lotus", "Watercolor", "Colorful", "Cosmic"],
+                likes: 0,
+                model: "DALL-E 3",
+                image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
+                prompt: "Watercolor splash tattoo design of a blooming lotus flower with cosmic moon phases, vibrant cyan and magenta ink drips, vector sketch overlay --ar 3:4"
+            },
+            {
+                id: 5,
+                title: "Dainty Wildflower Bouquet",
+                category: "Flowers",
+                tags: ["Flowers", "Dainty", "Fine Line", "Botanical"],
+                likes: 0,
+                model: "Midjourney v6",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                prompt: "Dainty botanical wildflower bouquet line art tattoo, delicate stem details, micro fineliner style, crisp white background, isolated graphic"
+            },
+            {
+                id: 6,
+                title: "Neotraditional Wolf & Crescent Moon",
+                category: "American Traditional",
+                tags: ["Wolf", "American Traditional", "Moon", "Bold"],
+                likes: 0,
+                model: "Midjourney v6",
+                image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+                prompt: "American traditional wolf head flash tattoo sheet design, bold black outlines, muted color palette, vintage flash banner, isolated background"
+            },
+            {
+                id: 7,
+                title: "Micro Realistic Eye of Providence",
+                category: "Realistic",
+                tags: ["Realistic", "Sacred Geometry", "Pyramid"],
+                likes: 0,
+                model: "DALL-E 3",
+                image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=800&q=80",
+                prompt: "Micro realistic tattoo vector art of the All-Seeing Eye inside a triangle with sunbeams, smooth dotwork shading, high detail focal point"
+            },
+            {
+                id: 8,
+                title: "Aesthetic Wave & Mountain Circle",
+                category: "Minimalist",
+                tags: ["Wave", "Landscape", "Circle", "Minimalist"],
+                likes: 0,
+                model: "Midjourney v6",
+                image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80",
+                prompt: "Minimalist circular Japanese ocean wave and mountain peak tattoo design, fine line style, balanced composition, black vector line art"
+            }
+        ];
+
+        const categories = ["All", "Fine Line", "Design", "Flowers", "Dainty", "Realistic", "Colorful", "Aztec", "American Traditional", "Minimalist"];
+
+        let currentCategory = "All";
+        let searchQuery = "";
+        let likedItems = new Set();
+
+        // Initialize App on DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderGrid();
+            setupSearchListeners();
+        });
+
+        // Render Category Filter Pills
+        function renderCategories() {
+            const container = document.getElementById('categoryContainer');
+            container.innerHTML = categories.map(cat => {
+                const isActive = cat === currentCategory;
+                return `
+                    <button onclick="filterByCategory('${cat}')" 
+                            class="px-4 py-2 rounded-full text-xs font-mono font-medium whitespace-nowrap transition-all ${
+                                isActive 
+                                ? 'bg-gradient-to-r from-brand-cyan to-blue-600 text-black font-bold shadow-md shadow-brand-cyan/20' 
+                                : 'bg-gray-900/80 text-gray-400 hover:text-gray-200 border border-gray-800 hover:border-gray-700'
+                            }">
+                        ${cat === 'All' ? '<i class="fa-solid fa-border-all mr-1.5"></i>' : ''}${cat}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Render Masonry Grid Cards (Including Native AdSlot)
+        function renderGrid() {
+            const grid = document.getElementById('masonryGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            // Filter logic
+            const filtered = mockDesigns.filter(item => {
+                const matchesCat = currentCategory === "All" || item.category === currentCategory || item.tags.includes(currentCategory);
+                const matchesSearch = searchQuery === "" || 
+                    item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                    item.prompt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    item.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
+                return matchesCat && matchesSearch;
+            });
+
+            // Update counter UI
+            document.getElementById('resultCount').innerText = `${filtered.length} prompt${filtered.length === 1 ? '' : 's'}`;
+            document.getElementById('activeCategoryTitle').innerText = currentCategory === "All" ? "All AI Designs" : `${currentCategory} Designs`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            let cardsHTML = '';
+
+            filtered.forEach((item, index) => {
+                const isLiked = likedItems.has(item.id);
+                cardsHTML += `
+                    <div class="glass-card rounded-2xl overflow-hidden break-inside-avoid group cursor-pointer relative" onclick="openLightbox(${item.id})">
+                        <!-- Image Container -->
+                        <div class="relative overflow-hidden bg-gray-900">
+                            <img src="${item.image}" alt="${item.title}" 
+                                 class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/600x800/111827/06b6d4?text=AI+Design+Preview';">
+                            
+                            <!-- Hover Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-between">
+                                <div class="flex justify-end">
+                                    <button onclick="event.stopPropagation(); toggleLike(${item.id})" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center text-xs ${isLiked ? 'text-rose-500' : 'text-white hover:text-rose-400'} transition-colors">
+                                        <i class="${isLiked ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="space-y-1">
+                                    <span class="text-[10px] font-mono bg-brand-cyan/20 text-brand-cyan px-2 py-0.5 rounded border border-brand-cyan/40">${item.category}</span>
+                                    <h4 class="text-xs font-bold text-white line-clamp-1">${item.title}</h4>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-4 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-gray-400"><i class="fa-solid fa-cube text-brand-purple mr-1"></i>Try: ${item.model}</span>
+                                <span class="text-[10px] font-mono text-gray-400"><i class="fa-regular fa-heart text-rose-500 mr-1"></i>${item.likes + (isLiked ? 1 : 0)}</span>
+                            </div>
+                            
+                            <!-- Prompt Preview snippet -->
+                            <p class="text-xs text-gray-300 font-mono line-clamp-2 bg-gray-900/60 p-2 rounded-lg border border-gray-800">
+                                "${item.prompt}"
+                            </p>
+
+                            <!-- Actions -->
+                            <button onclick="event.stopPropagation(); copyPrompt('${escapePrompt(item.prompt)}')" 
+                                    class="w-full bg-gray-900 hover:bg-brand-cyan hover:text-black text-brand-cyan font-mono text-xs font-semibold py-2 rounded-xl border border-gray-800 hover:border-brand-cyan transition-all flex items-center justify-center gap-2">
+                                <i class="fa-regular fa-copy"></i> Copy Prompt
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                // Inject In-Grid Native AdSlot after 3rd item
+                if (index === 2) {
+                    cardsHTML += `
+                        <div class="adsense-placeholder glass-card rounded-2xl p-4 break-inside-avoid border border-dashed border-gray-700/80 text-center">
+                            <span class="text-[9px] font-mono text-gray-500 uppercase tracking-widest block mb-2">Sponsored Content</span>
+                            <div class="min-h-[250px] bg-gray-900/60 rounded-xl border border-gray-800/80 flex flex-col items-center justify-center gap-2 p-4">
+                                <i class="fa-solid fa-rectangle-ad text-3xl text-brand-cyan/60"></i>
+                                <span class="text-xs font-mono text-gray-400">Google AdSense In-Feed Ad Space</span>
+                                <span class="text-[10px] text-gray-500 max-w-[180px]">Native ads styled to seamlessly match the gallery grid layout.</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            grid.innerHTML = cardsHTML;
+        }
+
+        // Helper to safely escape quotes in prompts
+        function escapePrompt(text) {
+            return text.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        }
+
+        // Search Handlers
+        function setupSearchListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const clearBtn = document.getElementById('clearSearchBtn');
+
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.trim();
+                if (searchQuery.length > 0) {
+                    clearBtn.classList.remove('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                }
+                renderGrid();
+            });
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                searchQuery = '';
+                clearBtn.classList.add('hidden');
+                renderGrid();
+            });
+        }
+
+        function filterByCategory(cat) {
+            currentCategory = cat;
+            renderCategories();
+            renderGrid();
+        }
+
+        function resetFilters() {
+            currentCategory = "All";
+            searchQuery = "";
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            renderCategories();
+            renderGrid();
+        }
+
+        // Lightbox Functions
+        function openLightbox(id) {
+            const item = mockDesigns.find(d => d.id === id);
+            if (!item) return;
+
+            document.getElementById('modalImage').src = item.image;
+            document.getElementById('modalTitle').innerText = item.title;
+            document.getElementById('modalCategory').innerText = item.category;
+            document.getElementById('modalModel').innerText = 'Try with: ' + item.model;
+            document.getElementById('modalPromptText').innerText = item.prompt;
+            document.getElementById('modalLikeCount').innerText = item.likes + (likedItems.has(item.id) ? 1 : 0);
+
+            // Tags
+            const tagsContainer = document.getElementById('modalTags');
+            tagsContainer.innerHTML = item.tags.map(t => 
+                `<span class="text-[10px] font-mono bg-gray-900 text-gray-300 border border-gray-800 px-2.5 py-1 rounded-md">#${t}</span>`
+            ).join('');
+
+            // Copy button event
+            const copyBtn = document.getElementById('modalCopyBtn');
+            copyBtn.onclick = () => copyPrompt(item.prompt);
+
+            document.getElementById('lightboxModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Submit Modal
+        function openSubmitModal() {
+            document.getElementById('submitModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSubmitModal() {
+            document.getElementById('submitModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const title = document.getElementById('submitTitle').value;
+            const category = document.getElementById('submitCategory').value;
+            const prompt = document.getElementById('submitPrompt').value;
+            const imageUrl = document.getElementById('submitImageUrl').value;
+
+            const subject = encodeURIComponent(`Design submission: ${title}`);
+            const body = encodeURIComponent(`Title: ${title}\nCategory: ${category}\nPrompt: ${prompt}\nImage URL: ${imageUrl}`);
+            window.location.href = `mailto:alichatsupuort@gmail.com?subject=${subject}&body=${body}`;
+
+            closeSubmitModal();
+            showToast('Opening your email app...');
+            e.target.reset();
+        }
+
+        // Like Toggle
+        function toggleLike(id) {
+            if (likedItems.has(id)) {
+                likedItems.delete(id);
+                showToast('Removed from favorites');
+            } else {
+                likedItems.add(id);
+                showToast('Added to favorites!');
+            }
+            renderGrid();
+        }
+
+        // Copy to Clipboard Utility
+        function copyPrompt(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => showToast('Prompt copied to clipboard!'));
+            } else {
+                // Fallback for iframe restrictions
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Prompt copied to clipboard!');
+            }
+        }
+
+        // Toast Notification System
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = msg;
+            
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-4');
+                toast.classList.add('translate-y-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0');
+                toast.classList.add('translate-y-4');
+                setTimeout(() => toast.classList.add('hidden'), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
