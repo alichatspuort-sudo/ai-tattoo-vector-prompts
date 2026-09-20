@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — ToolBench AI Directory</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode: 'class', theme: { extend: {
+    colors: { darkbg:'#030712', cardbg:'#0b0f19', brand:{ cyan:'#06b6d4', purple:'#a855f7', pink:'#ec4899' } },
+    fontFamily: { sans:['Plus Jakarta Sans','sans-serif'], mono:['JetBrains Mono','monospace'] }
+  }}}
+</script>
+<style>
+  body{ background:#030712; color:#f3f4f6; font-family:'Plus Jakarta Sans',sans-serif; }
+  .glass-panel{ background:rgba(11,15,25,0.75); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.08); }
+</style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+<header class="sticky top-0 z-40 glass-panel border-b border-gray-800/80">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center text-black font-black text-xl">
+          <i class="fa-solid fa-compass"></i>
+        </div>
+        <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">ToolBench</span>
+      </a>
+      <nav class="flex items-center gap-5 text-sm text-gray-400">
+        <a href="index.html" class="hover:text-brand-cyan transition-colors">Gallery</a>
+        <a href="about.html" class="hover:text-brand-cyan transition-colors">About</a>
+        <a href="contact.html" class="hover:text-brand-cyan transition-colors">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-1">
+  <h1 class="text-3xl font-extrabold text-white mb-6">About ToolBench AI Directory</h1>
+  <div class="space-y-5 text-gray-400 text-sm leading-relaxed">
+    <p>ToolBench AI Directory is a gallery of ready-to-use AI prompts for tattoo, vector, and illustration ideas — fine line, minimalist, vector art, Aztec, floral, and more.</p>
+    <p>Each entry pairs a written prompt with a reference photo chosen to convey the mood and style the prompt is going for. The reference photos are real photographs used for inspiration — they are not literal outputs of the paired prompt, and results from running the prompt yourself in an AI image tool will vary.</p>
+    <h2 class="text-lg font-bold text-gray-200 mt-8 mb-2">How to use this site</h2>
+    <p>Browse or search for a style, open a design to read the full prompt, copy it, and paste it into an AI image tool such as Midjourney, DALL·E, or Stable Diffusion. Treat each prompt as a starting point — small tweaks to wording, aspect ratio, or model version will change the result.</p>
+    <h2 class="text-lg font-bold text-gray-200 mt-8 mb-2">Submissions</h2>
+    <p>Have a prompt worth adding to the directory? Use the "Submit Design" button on the homepage, or reach out through the <a href="contact.html" class="text-brand-cyan hover:underline">contact page</a>.</p>
+  </div>
+</main>
+
+<footer class="glass-panel border-t border-gray-800/80 py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-mono">
+    <div>&copy; 2026 ToolBench AI Directory.</div>
+    <div class="flex items-center gap-4">
+      <a href="about.html" class="hover:text-gray-300 transition-colors">About</a>
+      <a href="privacy.html" class="hover:text-gray-300 transition-colors">Privacy</a>
+      <a href="disclaimer.html" class="hover:text-gray-300 transition-colors">Disclaimer</a>
+      <a href="contact.html" class="hover:text-gray-300 transition-colors">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
